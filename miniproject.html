@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UIU TUITION FEE CALCULATOR</title>
+    <script>
+        function credit() {
+            let credit = document.getElementById('credit').value;
+            return parseInt(credit);
+        }
+
+        function creditFee() {
+            let creditFee = document.getElementById('creditFee').value;
+            return parseInt(creditFee);
+        }
+
+        function semeFee() {
+            return 6500;
+        }
+
+        function calculate() {
+            let a = credit();
+            let b = creditFee();
+            let c = semeFee();
+
+            if (isNaN(a) || isNaN(b)) {
+                console.warn("Please enter valid numbers for all fields.");
+                document.getElementById('result').innerText = "ERROR: Please enter valid numbers for all fields.";
+                return;
+            }
+
+            let total = (a * b) + c;
+            let installment1 = total * 0.4;
+            let installment2 = total * 0.3;
+            let installment3 = total * 0.3;
+
+            console.warn("Total: " + total);
+            document.getElementById('result').innerHTML =
+                "Total Fee: " + total +
+                "<br>1st Installment (40%): " + installment1 +
+                "<br>2nd Installment (30%): " + installment2 +
+                "<br>3rd Installment (30%): " + installment3;
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        <label for="credit">Total Credit: </label>
+        <input type="number" id="credit" placeholder="Enter Total Credit">
+    </div>
+    <div>
+        <label for="creditFee">Per Credit Fee: </label>
+        <input type="number" id="creditFee" placeholder="Enter Per Credit Fee">
+    </div>
+
+    <div>
+        <button onclick="calculate()">Submit</button>
+    </div>
+
+    <div>
+        <p id="result"></p>
+    </div>
+</body>
+
+</html>
